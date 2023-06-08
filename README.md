@@ -15,9 +15,11 @@ This implies that BISNet allows clinicians with zero experience in segmentation 
 Consequently it is concluded that BISNet improves both upon the state-of-the-art and manual segmentation in terms of speed, accuracy and perceived workload and is independent of user experience.
 
 
-## BISNet in action
+## BISNet in 3D Slicer
 [![BISNet Video](preview.png)](BISNet_video.mp4)
 
-
-## BISNet in 3D Slicer
-WIP
+<iframe width="560" height="315"
+src="BISNet_video.mp4" 
+frameborder="0" 
+allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen></iframe>
