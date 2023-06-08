@@ -16,10 +16,5 @@ Consequently it is concluded that BISNet improves both upon the state-of-the-art
 
 
 ## BISNet in 3D Slicer
-[![BISNet Video](preview.png)](BISNet_video.mp4)
+https://github.com/FlorianRamakers123/BISNet/assets/13327946/cdcd2650-34c6-4e1f-bf64-388d9cdeea48
 
-<iframe width="560" height="315"
-src="BISNet_video.mp4" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
