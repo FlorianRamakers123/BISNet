@@ -1,0 +1,23 @@
+[data]
+root = "data/EAS/"
+
+[network]
+model_name = "example"
+
+[training]
+key_metric = "val_interaction"
+loss_funcs = [ "DiceCELoss", "WeightedDiceCELoss"]
+WDCE_sigma = 1.0
+loss_weights = [1.0, 1.0]
+
+[click-transforms]
+probability = 0.9
+encoding = "inverse_euclidean"
+error_influence = 0.1
+scaling = 1.0
+num_points = [1, 15]
+dropout_type = "decaying"
+dropout_cold_start = 0
+dropout_b = 0.99
+dropout_alpha = 1.0
+

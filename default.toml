@@ -1,0 +1,145 @@
+### DEFAULT VALUES FOR ALL PARAMETERS
+
+## Every parameter related to data
+[data]
+# The root folder of the data
+root =  "data/EAS/"
+# A 3-tuple specifying the image folder within the root folder for the train, validation and test set respectively
+image_folder = ["imagesTr", "imagesVal", "imagesTs"]
+# A 3-tuple specifying the labels folder within the root folder for the train, validation and test set respectively
+label_folder = ["labelsTr", "labelsVal", "labelsTs"]
+# The batch size
+batch_size = 1
+# The label names and there value (background cannot be included)
+label_names = { EAS = 1 }
+
+## Every parameter related to the network
+[network]
+# The kernel sizes to use
+kernel_sizes = [[3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3], [3, 3, 3]]
+# The strides to use
+strides = [[1, 1, 1], [2, 2, 2], [2, 2, 2], [2, 2, 2], [2, 2, 2]]
+# The number of input channels (set to 1 for default DynUNet without interaction)
+input_channels = 2
+# The name to give to this specific network configuration
+model_name = "model"
+
+## Every parameter related to the trainig/validation
+[training]
+# The device to use
+device = "cuda:0"
+# The metric used to determine whether the performance of a model improved
+key_metric = "val_dice"
+# sigma for calculating interaction metric
+interaction_sigma = 10.0
+# Set to true if a smaller value for the key metric indicates better performance (e.g. for distances)
+smallest_key_metric = false
+# Save a training checkpoint every N epochs
+checkpoint_save_interval = 100
+# Save the model weights every N epochs
+model_save_interval  = 0
+# Run a validation loop every N epochs
+validation_interval = 5
+# The amount of training epochs to run
+max_epochs = 200
+# The list of loss functions to use
+loss_funcs = ["DiceCELoss"]
+# The 'sigma' parameter for WeightedDiceCELoss
+WDCE_sigma = 10
+# The 'sigma' parameter for GuidanceDistanceLoss
+GDL_sigma = 10.0
+# The 'sigma_decay' parameter for GuidanceDistanceLoss
+GDL_sigma_decay = 0.99995
+# The weights for each of the loss functions
+loss_weights = [1.0]
+# The initial learning rate
+init_learning_rate = 0.001
+# The momentum to use for optimisation
+momentum = 0.99
+# The weight decay for the optimizer
+weight_decay = 3e-5
+# The nesterov flag for the optimizer
+nesterov = true
+# The learning rate decay
+lr_decay = 0.9
+# The seed to apply
+seed = 1
+
+## Every parameter related to the pre-transforms
+[pre-transforms]
+orientationd_axcodes = "LPS"
+spacingd_pixdim = [1, 1, 1]
+spacingd_mode = ['bilinear', 'nearest']
+resized_spatial_size = [96, 96, 96]
+spatialpadd_spatial_size = [96, 96, 96]
+normalizeintensityd_subtrahend = 22.67
+normalizeintensityd_divisor = 37.28
+
+## Every parameter related to the training transforms
+[train-transforms]
+randaffined_prob = 0.6
+randaffined_rotate_range = [[-0.5, 0.5], [0, 0], [0, 0]]
+randaffined_shear_range = [0.2, 0.2]
+randaffined_translate_range = [[-0.2, 0.2], [-0.1, 0.1], [-0.3, 0.3]]
+randaffined_mode = ['bilinear', 'nearest']
+randgausssiannoised_std = 0.001
+randgaussiannoised_prob = 0.6
+randscaleintensityd_factors = 0.3
+randscaleintensityd_prob = 0.3
+randgaussiansmooth_prob = 0.20
+randgaussiansmoothd_sigma_x = [0.25, 1.5]
+randgaussiansmoothd_sigma_y = [0.25, 1.5]
+randgaussiansmoothd_sigma_z = [0.25, 1.5]
+randflipd_spatial_axis = [0]
+randflipd_prob = 0.3
+randzoomd_prob = 0.5
+randzoomd_min_zoom = 0.7
+randzoomd_max_zoom = 1.3
+spatialpadd_spatial_size = [96, 96, 96]
+
+## Every parameter related to the click transforms
+[click-transforms]
+# The probability of adding guidance
+probability = 0.7
+# The encoding to use for the guidance
+encoding = "gaussian"
+# User variability, expressed as the standard deviation for the Gaussian smoothing applied to the density map
+user_variability = 1.0
+# The influence of the error of the prediction on the sampling of the point
+error_influence = 0.1
+# The sigma to use when encoding is "gaussian" or "geodesic"
+sigma = 5.0
+# The scaling factor when encoding is "geodesic"
+tau = 10.0
+# The scaling to use when encoding is "inverse_euclidean"
+scaling = 0.5
+# The number of points to generate
+num_points = [1,15]
+# The number of points to generate during validation
+val_num_points = 5
+# Whether to mix image features in the guidance channel
+mix_image_features = false
+# The fraction of guidance points to be inward points (-1.0 indicates fraction should be enforced)
+inward_points_fraction = -1.0
+# Whether to use a differen channel for inward points
+differ_inward_points = false
+# The kind of dropout to use. Can be "none", "decaying", or "dice"
+dropout_type = "none"
+# The threshold for the dice score when dropout_type is 'dice'
+dice_threshold = 0.6
+# Cold start of dropout
+dropout_cold_start = 0
+# b parameter of dropout
+dropout_b = 0.99
+# alpha parmeter of dropout
+dropout_alpha = 1.0
+# max_prob parmeter of dropout
+dropout_max_prob = 1.0
+# min_prob parmeter of dropout
+dropout_min_prob = 0.0
+# max_decay parmeter of dropout
+dropout_max_decay = 0.3
+# min_decay parmeter of dropout
+dropout_min_decay = 0.0
+# restart parmeter of dropout
+dropout_restart = 1820
