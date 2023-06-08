@@ -16,7 +16,7 @@ Consequently it is concluded that BISNet improves both upon the state-of-the-art
 
 
 ## BISNet in action
-![BISNet Video](BISNet_video.mp4)
+![BISNet Video](https://github.com/FlorianRamakers123/BISNet/blob/main/BISNet_video.mp4)
 
 
 ## BISNet in 3D Slicer
